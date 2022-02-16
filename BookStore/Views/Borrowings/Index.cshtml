@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BookStore.Models.Borrowing>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Borrow Book</a>
+</p>
+<p>
+    <a asp-action="Return">Return Book</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Returned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Returned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

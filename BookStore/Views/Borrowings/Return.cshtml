@@ -1,0 +1,44 @@
+﻿@model BookStore.Models.ReturnBookViewModel
+
+@{
+    ViewData["Title"] = "Return Book";
+}
+
+<h1>Return Book</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Return">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BookId" class="control-label"></label>
+                <select asp-for="BookId" class="form-control" asp-items="ViewBag.BookId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ReuturnedDate" class="control-label"></label>
+                <input asp-for="ReuturnedDate" class="form-control" />
+                <span asp-validation-for="ReuturnedDate" class="text-danger"></span>
+            </div>
+            <span class="text-danger">@Html.ValidationMessage("Error")</span>
+            <div class="form-group">
+                <input type="submit" value="Return Book" class="btn btn-primary" />
+            </div>
+        </form>
+
+        
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
